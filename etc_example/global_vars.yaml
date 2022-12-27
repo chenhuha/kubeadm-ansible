@@ -43,7 +43,7 @@ kubernetes_domain_name: kunlun.cluster.local
 kube_apiserver_port: 6443
 # docker 镜像 仓库名称
 kube_image_repository_name: "{% if ansible_architecture == 'aarch64' %}aarch64-kubernetes{% elif ansible_architecture == 'x86_64' %}kubernetes{% endif %}"
-# # docker 镜像 namespace
+# docker 镜像 namespace
 kube_image_repository: "{{ docker_register_domain }}:{{ docker_register_port }}/{{ kube_image_repository_name }}"
 # docker 镜像 tag
 kube_image_tag: 2.0.0

@@ -41,8 +41,10 @@ kube_apiserver_vip: 10.2.36.229
 kubernetes_domain_name: kunlun.cluster.local
 # k8s 集群 VIP 端口
 kube_apiserver_port: 6443
+# docker 镜像 仓库名称
+kube_image_repository_name: "{% if ansible_architecture == 'aarch64' %}aarch64-kubernetes{% elif ansible_architecture == 'x86_64' %}kubernetes{% endif %}"
 # docker 镜像 namespace
-kube_image_repository: "{{ docker_register_domain }}:{{ docker_register_port }}/kubernetes"
+kube_image_repository: "{{ docker_register_domain }}:{{ docker_register_port }}/{{ kube_image_repository_name }}"
 # docker 镜像 tag
 kube_image_tag: 2.0.0
 kubernetes_version: 1.23.5
