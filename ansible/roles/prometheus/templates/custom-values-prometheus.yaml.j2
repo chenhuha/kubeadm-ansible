@@ -10,6 +10,7 @@ image:
   thanos: {{ kube_image_repository }}/thanos:{{ prometheus_image_tag }}
   pullSecrets: {{ docker_register_secrets_name }}
   
+architecture: "{{ ansible_architecture }}"
 replica: "{{ replica_num }}"
 priorityClassName: "{{ kube_priority_name }}"
 pushgatewayVIP: "{{ fsd_proxy_ip }}"

@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - name: fsd-init
-          image: {{ kube_image_repository }}/fsd_init:{{ kube_image_tag }}
+          image: {{ kube_image_repository }}/fsd_init{% if ansible_architecture == "aarch64" %}_arm{% endif %}:{{ kube_image_tag }}
           env:
             - name: fsd_init_db_vip
               value: "mariadb"

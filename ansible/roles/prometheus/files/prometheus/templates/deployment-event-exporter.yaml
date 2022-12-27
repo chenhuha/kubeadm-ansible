@@ -29,9 +29,11 @@ spec:
         - name: event-exporter
           image: {{ .Values.image.event_exporter }}
           imagePullPolicy: IfNotPresent
+          {{- if ne .Values.architecture "aarch64" }}
           args:
             - --eventType=Warning
             - --eventType=Normal
+          {{- end }}
           ports:
             - containerPort: {{ .Values.service.event_exporter.port }}
               name: http
